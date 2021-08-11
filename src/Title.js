@@ -9,5 +9,4 @@ export default function Title(props) {
             <h1>{title}</h1>
         </div> 
     )
-
 }

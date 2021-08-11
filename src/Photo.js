@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { BASE_URL, API_KEY } from './constants/index';
-import axios from "axios";
+import React from "react";
 
 export default function Photo(props) {
-
-
+    
+    const { photo } = props;
 
     return (
-        <div className='container'>
-            <h1>Nasa Photo of the Day</h1>
-        </div> 
+        <img src={photo} alt="Nasa's of the Day"/>
     )
-
 }
