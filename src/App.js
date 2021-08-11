@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { BASE_URL, API_KEY } from "./constants";
 import "./App.css";
-import Photo from './Photo';
-import Title from './Title';
-import Explanation from "./Explanation";
-import Date from "./Date";
-import Copyright from "./Copyright";
+import Photo from './components/Photo';
+import Title from './components/Title';
+import Explanation from "./components/Explanation";
+import Date from "./components/Date";
+import Copyright from "./components/Copyright";
 
 
 
@@ -34,7 +34,7 @@ function App() {
       <Title title={docTitle} />
       <div className='main-content'>
         <div className='image'> 
-          <Photo src={photo} />
+          <Photo photo={photo} />
         </div>
         <div className='image-info'>
           <Copyright copyright={copyright} />
