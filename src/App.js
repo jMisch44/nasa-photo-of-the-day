@@ -4,6 +4,7 @@ import { BASE_URL, API_KEY } from "./constants";
 import "./App.css";
 import Photo from './Photo';
 import Title from './Title';
+import Explanation from "./Explanation";
 
 
 
@@ -11,10 +12,13 @@ import Title from './Title';
 function App() {
 
   const  [docTitle, setDocTitle] = useState(null);
+  const [explanation, setExplanation] = useState(null);
+
   useEffect(() => {
   axios.get(`${BASE_URL}?api_key=${API_KEY}`)
   .then( res=> {
   setDocTitle(res.data.title);
+  setExplanation(res.data.explanation);
 })
 },[]);
   return (
@@ -26,6 +30,7 @@ function App() {
       </p>
       {/* <div>IMG</div>
       <div>explanation(date,explanation,name</div> */}
+      <Explanation explanation={explanation} />
     </div>
   );
 }

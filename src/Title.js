@@ -5,7 +5,7 @@ export default function Title(props) {
     const { title } = props;
 
     return (
-        <div className='container'>
+        <div className='title'>
             <h1>{title}</h1>
         </div> 
     )
