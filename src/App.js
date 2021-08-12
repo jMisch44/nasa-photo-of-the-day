@@ -12,34 +12,28 @@ import Copyright from "./components/Copyright";
 
 function App() {
 
-  const  [docTitle, setDocTitle] = useState(null);
-  const [explanation, setExplanation] = useState(null);
-  const [date, setDate] = useState(null);
-  const [photo, setPhoto] = useState(null);
-  const [copyright, setCopyright] = useState(null);
+  const [nasaData, setNasaData] = useState({});
 
   useEffect(() => {
   axios.get(`${BASE_URL}?api_key=${API_KEY}`)
   .then( res=> {
-  setDocTitle(res.data.title);
-  setExplanation(res.data.explanation);
-  setDate(res.data.date);
-  setPhoto(res.data.url);
-  setCopyright(res.data.copyright);
+    setNasaData(res.data);
+}).catch(err => {
+  console.error(err);
 })
 },[]);
 
   return (
     <div className="App">
-      <Title title={docTitle} />
+      <Title title={nasaData.title} />
       <div className='main-content'>
         <div className='image'> 
-          <Photo photo={photo} />
+          <Photo photo={nasaData.url} />
         </div>
         <div className='image-info'>
-          <Copyright copyright={copyright} />
-          <Date date={date} />
-          <Explanation explanation={explanation} />
+          <Copyright copyright={nasaData.copyright} />
+          <Date date={nasaData.date} />
+          <Explanation explanation={nasaData.explanation} />
         </div>
       </div>
     </div>
