@@ -4,6 +4,6 @@ export default function Copyright(props) {
     const { copyright } = props;
 
     return (
-        <p>{copyright}</p>
+        <p className='copyright'>{copyright}</p>
     )
 }

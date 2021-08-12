@@ -2,12 +2,24 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { BASE_URL, API_KEY } from "./constants";
 import "./App.css";
-import Photo from './components/Photo';
-import Title from './components/Title';
-import Explanation from "./components/Explanation";
-import Date from "./components/Date";
-import Copyright from "./components/Copyright";
+import Photo from './components/mainContent/Photo';
+import Title from './components/Header/Title';
+import Explanation from "./components/mainContent/Explanation";
+import Date from "./components/mainContent/Date";
+import Copyright from "./components/mainContent/Copyright";
+import theme from "./components/theme";
+import styled from "styled-components";
+import { StyledMainContent } from "./components/mainContent/StyledMainContent";
+import { StyledPhotoInfo } from "./components/mainContent/StyledPhotoInfo";
 
+const StyledApp = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: auto;
+  color: ${pr => pr.theme.black};
+  
+`
 
 
 function App() {
@@ -24,19 +36,19 @@ function App() {
 },[]);
 
   return (
-    <div className="App">
-      <Title title={nasaData.title} />
-      <div className='main-content'>
-        <div className='image'> 
-          <Photo photo={nasaData.url} />
-        </div>
-        <div className='image-info'>
-          <Copyright copyright={nasaData.copyright} />
-          <Date date={nasaData.date} />
-          <Explanation explanation={nasaData.explanation} />
-        </div>
+    <StyledApp className="App">
+      <div>
+        <Title title={nasaData.title} />
       </div>
-    </div>
+        <StyledMainContent>
+          <Photo photo={nasaData.url} />
+          <StyledPhotoInfo>
+            <Explanation explanation={nasaData.explanation} />
+            <Date date={nasaData.date} /> 
+            <Copyright copyright={nasaData.copyright} />
+          </StyledPhotoInfo>
+        </StyledMainContent>
+    </StyledApp>
   );
 }
 
